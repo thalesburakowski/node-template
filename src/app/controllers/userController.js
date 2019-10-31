@@ -6,10 +6,10 @@ const create = async (req, res) => {
 	try {
 		const userExists = await User.findOne({ where: { email } });
 		if (userExists) {
-			return res.status(401).send({ message: "Este email já foi cadastrado!" });
+			return res.status(400).send({ message: "Este email já foi cadastrado!" });
 		}
 		const user = await User.create({ name, email, password });
-		return res.send(user);
+		return res.status(201).send(user);
 	} catch (error) {
 		console.log(error);
 		return res.status(500).send({

@@ -20,7 +20,7 @@ describe("User", () => {
 				password: user.password,
 			});
 
-		expect(response.status).toBe(200);
+		expect(response.status).toBe(201);
 	});
 
 	it("should not create user", async () => {
@@ -37,8 +37,8 @@ describe("User", () => {
 				email: user.email,
 				password: user.password,
 			});
-			
-		expect(response.status).toBe(401);
+
+		expect(response.status).toBe(400);
 	});
 
 	it("should not create user and return 500", async () => {
@@ -55,7 +55,7 @@ describe("User", () => {
 				email: user.email,
 				password: user.password,
 			});
-			
+
 		expect(response.status).toBe(500);
 	});
 });
